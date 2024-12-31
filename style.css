@@ -1,0 +1,629 @@
+:root {
+  --vig-comment-bg: #ffffff;
+  --vig-comment-bg-secondary: #f1f3f5;
+  --vig-comment-text: #1a1b1e;
+  --vig-comment-text-secondary: #868e96;
+  --vig-comment-border: rgba(0, 0, 0, 0.15);
+  --vig-comment-primary: #228be6;
+  --vig-comment-hover: rgba(0, 0, 0, 0.05);
+}
+
+.vig-comment-dark {
+  --vig-comment-bg: #0f1117;
+  --vig-comment-bg-secondary: #1a1b26;
+  --vig-comment-text: #ced4da;
+  --vig-comment-text-secondary: #868e96;
+  --vig-comment-border: rgba(255, 255, 255, 0.1);
+  --vig-comment-primary: #228be6;
+  --vig-comment-hover: rgba(255, 255, 255, 0.05);
+}
+
+.vig-comment-container {
+  margin: 0 auto;
+  padding: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: var(--vig-comment-text);
+  background: var(--vig-comment-bg);
+  overflow: visible;
+}
+
+.vig-comment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  position: relative;
+  overflow: visible;
+}
+
+.vig-comment-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.vig-comment-subscribe {
+  padding: 6px 12px;
+  font-size: 13px;
+  color: var(--vig-comment-text-secondary);
+  background: transparent;
+  border: 1px solid var(--vig-comment-border);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.vig-comment-subscribe:hover {
+  background: var(--vig-comment-hover);
+}
+
+.vig-comment-form {
+  margin-bottom: 32px;
+  background: var(--vig-comment-bg-secondary);
+  border-radius: 8px;
+  overflow: visible;
+  border: 1px solid var(--vig-comment-border);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.vig-comment-form-header {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+}
+
+.vig-comment-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.vig-comment-textarea {
+  flex: 1;
+  min-height: 100px;
+  padding: 8px;
+  background: transparent;
+  border: none;
+  color: var(--vig-comment-text);
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.5;
+  resize: none;
+}
+
+.vig-comment-textarea::placeholder {
+  color: var(--vig-comment-text-secondary);
+}
+
+.vig-comment-textarea:focus {
+  outline: none;
+}
+
+.vig-comment-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  border-top: 1px solid var(--vig-comment-border);
+}
+
+.vig-comment-tools {
+  display: flex;
+  gap: 8px;
+}
+
+.vig-comment-tool-btn {
+  padding: 6px;
+  background: transparent;
+  border: none;
+  color: var(--vig-comment-text-secondary);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.vig-comment-tool-btn:hover {
+  background: var(--vig-comment-hover);
+  color: var(--vig-comment-text);
+}
+
+.vig-comment-tool-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.vig-comment-submit {
+  padding: 6px 16px;
+  font-size: 14px;
+  color: #fff;
+  background: var(--vig-comment-primary);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.vig-comment-submit:hover {
+  opacity: 0.9;
+}
+
+.vig-comment-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.vig-comment-item {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+  background: var(--vig-comment-bg-secondary);
+  border-radius: 8px;
+  border: 1px solid var(--vig-comment-border);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  overflow: visible;
+}
+
+.vig-comment-reply-item {
+  margin-left: 56px;
+}
+
+.vig-comment-vote {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0px;
+  padding: 4px 8px;
+  border: none;
+  min-width: 32px;
+  min-height: 80px;
+  background: var(--vig-comment-hover);
+  border-radius: 4px;
+}
+
+.vig-comment-vote-btn {
+  padding: 4px 8px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: var(--vig-comment-text-secondary);
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  line-height: 1;
+  border-radius: 2px;
+  flex: 1;
+}
+
+.vig-comment-vote-btn:hover {
+  background: var(--vig-comment-bg);
+}
+
+.vig-comment-vote-btn svg {
+  width: 14px;
+  height: 14px;
+}
+
+.vig-comment-vote-count {
+  font-size: 12px;
+  color: var(--vig-comment-text);
+  line-height: 1;
+  padding: 8px 0;
+  min-width: 24px;
+  text-align: center;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vig-comment-main {
+  flex: 1;
+  overflow: visible;
+}
+
+.vig-comment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.vig-comment-user {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.vig-comment-name {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.vig-comment-date {
+  font-size: 13px;
+  color: var(--vig-comment-text-secondary);
+}
+
+.vig-comment-more-wrapper {
+  position: relative;
+}
+
+.vig-comment-more {
+  padding: 6px;
+  background: transparent;
+  border: none;
+  color: var(--vig-comment-text-secondary);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vig-comment-more:hover {
+  background: var(--vig-comment-hover);
+  color: var(--vig-comment-text);
+}
+
+.vig-comment-more svg {
+  width: 16px;
+  height: 16px;
+}
+
+.vig-comment-more-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: var(--vig-comment-bg);
+  border: 1px solid var(--vig-comment-border);
+  border-radius: 6px;
+  padding: 4px 0;
+  min-width: 120px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  display: none;
+  z-index: 1000;
+}
+
+.vig-comment-more.active + .vig-comment-more-menu {
+  display: block;
+}
+
+.vig-comment-more-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  width: 100%;
+  color: var(--vig-comment-text);
+  font-size: 13px;
+  background: transparent;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.vig-comment-more-item svg {
+  width: 14px;
+  height: 14px;
+}
+
+.vig-comment-more-item:hover {
+  background: var(--vig-comment-hover);
+}
+
+.vig-comment-more-item.delete {
+  color: #ff4d4f;
+}
+
+.vig-comment-more-item.delete:hover {
+  background: #fff1f0;
+}
+
+.vig-comment-content {
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.vig-comment-actions {
+  display: flex;
+  gap: 16px;
+}
+
+.vig-comment-reply {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: transparent;
+  border: 1px solid var(--vig-comment-border);
+  border-radius: 4px;
+  color: var(--vig-comment-text-secondary);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.vig-comment-reply svg {
+  width: 14px;
+  height: 14px;
+}
+
+.vig-comment-reply:hover {
+  color: var(--vig-comment-text);
+  background: var(--vig-comment-hover);
+}
+
+.vig-comment-reply:hover svg {
+  color: var(--vig-comment-primary);
+}
+
+@media (max-width: 640px) {
+  .vig-comment-container {
+    padding: 16px;
+  }
+
+  .vig-comment-reply-item {
+    margin-left: 24px;
+  }
+
+  .vig-comment-toolbar {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .vig-comment-tools {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .vig-comment-submit {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .vig-comment-reply-item {
+    margin-left: 24px !important;
+  }
+}
+
+.vig-comment-item.highlighted {
+  border: 1px solid var(--vig-comment-primary);
+  box-shadow: 0 0 0 1px var(--vig-comment-primary);
+}
+
+.vig-comment-reply-item[style*="margin-left: 224px"],
+.vig-comment-reply-item[style*="margin-left: 280px"] {
+  margin-left: 168px !important;
+}
+
+.vig-comment-vote-btn svg {
+  width: 14px;
+  height: 14px;
+}
+
+.vig-comment-vote-btn.up-vote:hover svg {
+  color: var(--vig-comment-primary);
+}
+
+.vig-comment-vote-btn.down-vote:hover svg {
+  color: #ff4d4f;
+}
+
+.vig-comment-vote-btn.up-vote.voted svg {
+  fill: var(--vig-comment-primary);
+  color: var(--vig-comment-primary);
+}
+
+.vig-comment-vote-btn.down-vote.voted svg {
+  fill: #ff4d4f;
+  color: #ff4d4f;
+}
+
+.vig-comment-theme-toggle {
+  padding: 8px;
+  background: transparent;
+  border: 1px solid var(--vig-comment-border);
+  border-radius: 6px;
+  cursor: pointer;
+  color: var(--vig-comment-text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.vig-comment-theme-toggle:hover {
+  background: var(--vig-comment-hover);
+  color: var(--vig-comment-text);
+}
+
+.vig-comment-theme-toggle svg {
+  width: 18px;
+  height: 18px;
+}
+
+.vig-comment-theme-toggle .theme-light {
+  display: none;
+}
+
+.vig-comment-theme-toggle .theme-dark {
+  display: block;
+}
+
+.vig-comment-dark .vig-comment-theme-toggle .theme-light {
+  display: block;
+}
+
+.vig-comment-dark .vig-comment-theme-toggle .theme-dark {
+  display: none;
+}
+
+.vig-comment-emoji-wrapper {
+  position: relative;
+}
+
+.vig-comment-emoji-picker {
+  position: fixed;
+  display: none;
+  z-index: 1000;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  background: var(--vig-comment-bg);
+}
+
+/* Desktop styles */
+@media (min-width: 768px) {
+  .vig-comment-emoji-picker {
+    position: absolute;
+    top: 0;
+    left: calc(100% + 8px);
+    transform: none;
+    margin: 0;
+  }
+
+  emoji-picker {
+    width: 450px !important;
+    height: 435px !important;
+    min-width: 450px;
+  }
+}
+
+/* Tablet styles - thêm mới cho khoảng 482px-767px */
+@media (min-width: 482px) and (max-width: 767px) {
+  .vig-comment-emoji-picker {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  emoji-picker {
+    width: 450px !important;
+    height: 435px !important;
+    min-width: 450px;
+  }
+}
+
+/* Mobile styles */
+@media (max-width: 481px) {
+  .vig-comment-emoji-picker {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  emoji-picker {
+    width: 320px;
+    height: 400px;
+  }
+}
+
+/* Màn hình nhỏ hơn */
+@media (max-width: 480px) {
+  emoji-picker {
+    width: 300px;
+    height: 380px;
+  }
+}
+
+.vig-comment-emoji-wrapper.active .vig-comment-emoji-picker {
+  display: block;
+}
+
+/* Dark mode support */
+.vig-comment-dark emoji-picker {
+  --background: var(--vig-comment-bg-secondary);
+  --border-color: var(--vig-comment-border);
+  --indicator-color: var(--vig-comment-primary);
+  --input-border-color: var(--vig-comment-border);
+  --input-font-color: var(--vig-comment-text);
+  --input-placeholder-color: var(--vig-comment-text-secondary);
+  --category-font-color: var(--vig-comment-text);
+  --button-hover-background: var(--vig-comment-hover);
+  --button-active-background: var(--vig-comment-hover);
+}
+
+@media (max-height: 500px) {
+  .vig-comment-emoji-picker {
+    bottom: auto;
+    top: calc(100% + 10px);
+    transform: translateY(10px);
+  }
+}
+
+.vig-comment-form {
+  overflow: visible !important;
+}
+
+.vig-comment-toolbar {
+  position: relative;
+  overflow: visible !important;
+}
+
+.vig-comment-tools {
+  position: relative;
+  overflow: visible !important;
+}
+
+@media (max-width: 768px) {
+  .vig-comment-emoji-picker.position-top,
+  .vig-comment-emoji-picker.position-bottom {
+    right: -160px;
+  }
+}
+
+@media (max-width: 480px) {
+  .vig-comment-emoji-picker.position-top,
+  .vig-comment-emoji-picker.position-bottom {
+    right: -80px;
+  }
+}
+
+/* Style mới cho emoji picker */
+emoji-picker {
+  width: 320px;
+  height: 400px;
+}
+
+/* Responsive cho màn hình nhỏ */
+@media (max-width: 480px) {
+  emoji-picker {
+    width: 90vw;
+    height: auto;
+    max-height: 80vh;
+  }
+}
+
+.vig-comment-emoji-close {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  padding: 5px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--vig-comment-text-secondary);
+  z-index: 1001;
+  border-radius: 4px;
+}
+
+.vig-comment-emoji-close:hover {
+  background: var(--vig-comment-hover);
+  color: var(--vig-comment-text);
+}
+
+.vig-comment-emoji-close svg {
+  width: 16px;
+  height: 16px;
+}

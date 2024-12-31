@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="vi" class="vig-comment-dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discussion System</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="https://cdn.jsdelivr.net/npm/emoji-picker-element@^1/index.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/emoji-picker-element@^1/css/emojimart.css">
+</head>
+
+<body>
+    <div class="vig-comment-container">
+        <div class="vig-comment-header">
+            <h2 class="vig-comment-title">Discussion (20)</h2>
+            <button class="vig-comment-theme-toggle" title="Toggle theme">
+                <svg class="theme-light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+                <svg class="theme-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Comment Form -->
+        <div class="vig-comment-form">
+            <div class="vig-comment-form-header">
+                <img src="https://via.placeholder.com/40" alt="User avatar" class="vig-comment-avatar">
+                <textarea placeholder="Write a comment..." class="vig-comment-textarea"></textarea>
+            </div>
+            <div class="vig-comment-toolbar">
+                <div class="vig-comment-tools">
+                    <button class="vig-comment-tool-btn" title="Bold">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 4h8a4 4 0 0 1 4 4 4 4 0 0 1-4 4H6z"></path>
+                            <path d="M6 12h9a4 4 0 0 1 4 4 4 4 0 0 1-4 4H6z"></path>
+                        </svg>
+                    </button>
+                    <button class="vig-comment-tool-btn" title="Italic">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="19" y1="4" x2="10" y2="4"></line>
+                            <line x1="14" y1="20" x2="5" y2="20"></line>
+                            <line x1="15" y1="4" x2="9" y2="20"></line>
+                        </svg>
+                    </button>
+                    <button class="vig-comment-tool-btn" title="Code">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="16 18 22 12 16 6"></polyline>
+                            <polyline points="8 6 2 12 8 18"></polyline>
+                        </svg>
+                    </button>
+                    <button class="vig-comment-tool-btn" title="Link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                        </svg>
+                    </button>
+                    <button class="vig-comment-tool-btn" title="Image">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                            <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                            <polyline points="21 15 16 10 5 21"></polyline>
+                        </svg>
+                    </button>
+                    <div class="vig-comment-emoji-wrapper">
+                        <button class="vig-comment-tool-btn" title="Emoji">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                                <line x1="9" y1="9" x2="9.01" y2="9"></line>
+                                <line x1="15" y1="9" x2="15.01" y2="9"></line>
+                            </svg>
+                        </button>
+                        <emoji-picker class="vig-comment-emoji-picker"></emoji-picker>
+                    </div>
+                </div>
+                <button class="vig-comment-submit">Post comment</button>
+            </div>
+        </div>
+
+        <div class="vig-comment-list">
+            <!-- Comment gốc 1 -->
+            <div class="vig-comment-item">
+                <div class="vig-comment-vote">
+                    <button class="vig-comment-vote-btn up-vote">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path>
+                        </svg>
+                    </button>
+                    <span class="vig-comment-vote-count">14</span>
+                    <button class="vig-comment-vote-btn down-vote">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3zm7-13h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-3"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="vig-comment-main">
+                    <div class="vig-comment-header">
+                        <div class="vig-comment-user">
+                            <img src="https://via.placeholder.com/40" alt="Bonnie Green" class="vig-comment-avatar">
+                            <span class="vig-comment-name">Bonnie Green</span>
+                            <span class="vig-comment-date">Mar. 15, 2022</span>
+                        </div>
+                        <div class="vig-comment-more-wrapper">
+                            <button class="vig-comment-more">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="1"></circle>
+                                    <circle cx="19" cy="12" r="1"></circle>
+                                    <circle cx="5" cy="12" r="1"></circle>
+                                </svg>
+                            </button>
+                            <div class="vig-comment-more-menu">
+                                <button class="vig-comment-more-item edit">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                                    </svg>
+                                    Edit
+                                </button>
+                                <button class="vig-comment-more-item delete">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M3 6h18"></path>
+                                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                                    </svg>
+                                    Delete
+                                </button>
+                                <button class="vig-comment-more-item report">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                                        <line x1="12" y1="9" x2="12" y2="13"></line>
+                                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                                    </svg>
+                                    Report
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="vig-comment-content">
+                        Comment cấp 1: The article covers the essentials, challenges, myths and stages the UX designer should consider while creating the design strategy.
+                    </div>
+                    <div class="vig-comment-actions">
+                        <button class="vig-comment-reply">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 14 4 9 9 4"></polyline>
+                                <path d="M20 20v-7a4 4 0 0 0-4-4H4"></path>
+                            </svg>
+                            Reply
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reply cấp 1 -->
+            <div class="vig-comment-item vig-comment-reply-item">
+                <div class="vig-comment-vote">
+                    <button class="vig-comment-vote-btn up-vote">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path>
+                        </svg>
+                    </button>
+                    <span class="vig-comment-vote-count">8</span>
+                    <button class="vig-comment-vote-btn down-vote">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3zm7-13h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-3"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="vig-comment-main">
+                    <div class="vig-comment-header">
+                        <div class="vig-comment-user">
+                            <img src="https://via.placeholder.com/40" alt="User" class="vig-comment-avatar">
+                            <span class="vig-comment-name">Nguyễn Văn A</span>
+                            <span class="vig-comment-date">Mar. 16, 2022</span>
+                        </div>
+                        <div class="vig-comment-more-wrapper">
+                            <button class="vig-comment-more">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="1"></circle>
+                                    <circle cx="19" cy="12" r="1"></circle>
+                                    <circle cx="5" cy="12" r="1"></circle>
+                                </svg>
+                            </button>
+                            <div class="vig-comment-more-menu">
+                                <button class="vig-comment-more-item edit">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                                    </svg>
+                                    Edit
+                                </button>
+                                <button class="vig-comment-more-item delete">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M3 6h18"></path>
+                                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                                    </svg>
+                                    Delete
+                                </button>
+                                <button class="vig-comment-more-item report">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                                        <line x1="12" y1="9" x2="12" y2="13"></line>
+                                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                                    </svg>
+                                    Report
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="vig-comment-content">
+                        Trả lời cấp 1: Đồng ý với ý kiến trên. Rất hay!
+                    </div>
+                    <div class="vig-comment-actions">
+                        <button class="vig-comment-reply">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 14 4 9 9 4"></polyline>
+                                <path d="M20 20v-7a4 4 0 0 0-4-4H4"></path>
+                            </svg>
+                            Reply
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reply cấp 2 -->
+            <div class="vig-comment-item vig-comment-reply-item" style="margin-left: 112px;">
+                <div class="vig-comment-vote">
+                    <button class="vig-comment-vote-btn up-vote">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path>
+                        </svg>
+                    </button>
+                    <span class="vig-comment-vote-count">5</span>
+                    <button class="vig-comment-vote-btn down-vote">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3zm7-13h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-3"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="vig-comment-main">
+                    <div class="vig-comment-header">
+                        <div class="vig-comment-user">
+                            <img src="https://via.placeholder.com/40" alt="User" class="vig-comment-avatar">
+                            <span class="vig-comment-name">Trần Thị B</span>
+                            <span class="vig-comment-date">Mar. 17, 2022</span>
+                        </div>
+                        <div class="vig-comment-more-wrapper">
+                            <button class="vig-comment-more">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="1"></circle>
+                                    <circle cx="19" cy="12" r="1"></circle>
+                                    <circle cx="5" cy="12" r="1"></circle>
+                                </svg>
+                            </button>
+                            <div class="vig-comment-more-menu">
+                                <button class="vig-comment-more-item edit">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                                    </svg>
+                                    Edit
+                                </button>
+                                <button class="vig-comment-more-item delete">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M3 6h18"></path>
+                                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                                    </svg>
+                                    Delete
+                                </button>
+                                <button class="vig-comment-more-item report">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                                        <line x1="12" y1="9" x2="12" y2="13"></line>
+                                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                                    </svg>
+                                    Report
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="vig-comment-content">
+                        Trả lời cấp 2: Tôi muốn thêm một số ý kiến...
+                    </div>
+                    <div class="vig-comment-actions">
+                        <button class="vig-comment-reply">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 14 4 9 9 4"></polyline>
+                                <path d="M20 20v-7a4 4 0 0 0-4-4H4"></path>
+                            </svg>
+                            Reply
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reply cấp 3 -->
+            <div class="vig-comment-item vig-comment-reply-item" style="margin-left: 168px;">
+                <div class="vig-comment-vote">
+                    <button class="vig-comment-vote-btn up-vote">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path>
+                        </svg>
+                    </button>
+                    <span class="vig-comment-vote-count">3</span>
+                    <button class="vig-comment-vote-btn down-vote">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3zm7-13h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-3"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="vig-comment-main">
+                    <div class="vig-comment-header">
+                        <div class="vig-comment-user">
+                            <img src="https://via.placeholder.com/40" alt="User" class="vig-comment-avatar">
+                            <span class="vig-comment-name">Lê Văn C</span>
+                            <span class="vig-comment-date">Mar. 18, 2022</span>
+                        </div>
+                        <div class="vig-comment-more-wrapper">
+                            <button class="vig-comment-more">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="1"></circle>
+                                    <circle cx="19" cy="12" r="1"></circle>
+                                    <circle cx="5" cy="12" r="1"></circle>
+                                </svg>
+                            </button>
+                            <div class="vig-comment-more-menu">
+                                <button class="vig-comment-more-item edit">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                                    </svg>
+                                    Edit
+                                </button>
+                                <button class="vig-comment-more-item delete">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M3 6h18"></path>
+                                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                                    </svg>
+                                    Delete
+                                </button>
+                                <button class="vig-comment-more-item report">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                                        <line x1="12" y1="9" x2="12" y2="13"></line>
+                                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                                    </svg>
+                                    Report
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="vig-comment-content">
+                        Trả lời cấp 3: Cuộc thảo luận rất thú vị!
+                    </div>
+                    <div class="vig-comment-actions">
+                        <button class="vig-comment-reply">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 14 4 9 9 4"></polyline>
+                                <path d="M20 20v-7a4 4 0 0 0-4-4H4"></path>
+                            </svg>
+                            Reply
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comment gốc 2 -->
+            <div class="vig-comment-item">
+                <div class="vig-comment-vote">
+                    <button class="vig-comment-vote-btn up-vote">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path>
+                        </svg>
+                    </button>
+                    <span class="vig-comment-vote-count">10</span>
+                    <button class="vig-comment-vote-btn down-vote">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3zm7-13h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-3"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="vig-comment-main">
+                    <div class="vig-comment-header">
+                        <div class="vig-comment-user">
+                            <img src="https://via.placeholder.com/40" alt="User" class="vig-comment-avatar">
+                            <span class="vig-comment-name">Phạm Thị D</span>
+                            <span class="vig-comment-date">Mar. 19, 2022</span>
+                        </div>
+                        <div class="vig-comment-more-wrapper">
+                            <button class="vig-comment-more">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="1"></circle>
+                                    <circle cx="19" cy="12" r="1"></circle>
+                                    <circle cx="5" cy="12" r="1"></circle>
+                                </svg>
+                            </button>
+                            <div class="vig-comment-more-menu">
+                                <button class="vig-comment-more-item edit">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                                    </svg>
+                                    Edit
+                                </button>
+                                <button class="vig-comment-more-item delete">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M3 6h18"></path>
+                                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                                    </svg>
+                                    Delete
+                                </button>
+                                <button class="vig-comment-more-item report">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                                        <line x1="12" y1="9" x2="12" y2="13"></line>
+                                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                                    </svg>
+                                    Report
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="vig-comment-content">
+                        Comment mới: Tôi có một số góp ý về thiết kế...
+                    </div>
+                    <div class="vig-comment-actions">
+                        <button class="vig-comment-reply">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 14 4 9 9 4"></polyline>
+                                <path d="M20 20v-7a4 4 0 0 0-4-4H4"></path>
+                            </svg>
+                            Reply
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Thêm 10 comment mới -->
+            <div class="vig-comment-item">
+                <div class="vig-comment-vote">
+                    <button class="vig-comment-vote-btn up-vote">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path>
+                        </svg>
+                    </button>
+                    <span class="vig-comment-vote-count">25</span>
+                    <button class="vig-comment-vote-btn down-vote">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3zm7-13h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-3"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="vig-comment-main">
+                    <div class="vig-comment-header">
+                        <div class="vig-comment-user">
+                            <img src="https://via.placeholder.com/40" alt="User" class="vig-comment-avatar">
+                            <span class="vig-comment-name">Nguyễn Hoàng Long</span>
+                            <span class="vig-comment-date">Mar. 20, 2022</span>
+                        </div>
+                        <div class="vig-comment-more-wrapper">
+                            <button class="vig-comment-more">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="1"></circle>
+                                    <circle cx="19" cy="12" r="1"></circle>
+                                    <circle cx="5" cy="12" r="1"></circle>
+                                </svg>
+                            </button>
+                            <div class="vig-comment-more-menu">
+                                <button class="vig-comment-more-item edit">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                                    </svg>
+                                    Edit
+                                </button>
+                                <button class="vig-comment-more-item delete">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M3 6h18"></path>
+                                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                                    </svg>
+                                    Delete
+                                </button>
+                                <button class="vig-comment-more-item report">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                                        <line x1="12" y1="9" x2="12" y2="13"></line>
+                                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                                    </svg>
+                                    Report
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="vig-comment-content">
+                        Trong quá trình phát triển ứng dụng web, việc tối ưu hóa trải nghiệm người dùng là một yếu tố quan trọng không thể bỏ qua. Điều này không chỉ bao gồm giao diện người dùng mà còn liên quan đến hiệu suất, tốc độ tải trang, khả năng tương tác và độ tin cậy của ứng dụng. Việc áp dụng các nguyên tắc thiết kế responsive, tối ưu hóa hình ảnh, sử dụng lazy loading và implement các best practices trong phát triển web sẽ giúp nâng cao đáng kể chất lượng sản phẩm cuối cùng.
+                    </div>
+                    <div class="vig-comment-actions">
+                        <button class="vig-comment-reply">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 14 4 9 9 4"></polyline>
+                                <path d="M20 20v-7a4 4 0 0 0-4-4H4"></path>
+                            </svg>
+                            Reply
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reply cho comment dài -->
+            <div class="vig-comment-item vig-comment-reply-item">
+                <div class="vig-comment-vote">
+                    <button class="vig-comment-vote-btn up-vote">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path>
+                        </svg>
+                    </button>
+                    <span class="vig-comment-vote-count">18</span>
+                    <button class="vig-comment-vote-btn down-vote">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3zm7-13h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-3"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="vig-comment-main">
+                    <div class="vig-comment-header">
+                        <div class="vig-comment-user">
+                            <img src="https://via.placeholder.com/40" alt="User" class="vig-comment-avatar">
+                            <span class="vig-comment-name">Trần Minh Tuấn</span>
+                            <span class="vig-comment-date">Mar. 21, 2022</span>
+                        </div>
+                        <div class="vig-comment-more-wrapper">
+                            <button class="vig-comment-more">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="1"></circle>
+                                    <circle cx="19" cy="12" r="1"></circle>
+                                    <circle cx="5" cy="12" r="1"></circle>
+                                </svg>
+                            </button>
+                            <div class="vig-comment-more-menu">
+                                <button class="vig-comment-more-item edit">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                                    </svg>
+                                    Edit
+                                </button>
+                                <button class="vig-comment-more-item delete">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M3 6h18"></path>
+                                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                                    </svg>
+                                    Delete
+                                </button>
+                                <button class="vig-comment-more-item report">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                                        <line x1="12" y1="9" x2="12" y2="13"></line>
+                                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                                    </svg>
+                                    Report
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="vig-comment-content">
+                        Đồng ý với quan điểm này. Bạn có thể chia sẻ thêm về các công cụ và framework đang được sử dụng không?
+                    </div>
+                    <div class="vig-comment-actions">
+                        <button class="vig-comment-reply">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 14 4 9 9 4"></polyline>
+                                <path d="M20 20v-7a4 4 0 0 0-4-4H4"></path>
+                            </svg>
+                            Reply
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comment 3 -->
+            <div class="vig-comment-item">
+                <div class="vig-comment-vote">
+                    <button class="vig-comment-vote-btn up-vote">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path>
+                        </svg>
+                    </button>
+                    <span class="vig-comment-vote-count">32</span>
+                    <button class="vig-comment-vote-btn down-vote">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3zm7-13h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-3"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="vig-comment-main">
+                    <div class="vig-comment-header">
+                        <div class="vig-comment-user">
+                            <img src="https://via.placeholder.com/40" alt="User" class="vig-comment-avatar">
+                            <span class="vig-comment-name">Lê Thị Hương</span>
+                            <span class="vig-comment-date">Mar. 22, 2022</span>
+                        </div>
+                        <div class="vig-comment-more-wrapper">
+                            <button class="vig-comment-more">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="1"></circle>
+                                    <circle cx="19" cy="12" r="1"></circle>
+                                    <circle cx="5" cy="12" r="1"></circle>
+                                </svg>
+                            </button>
+                            <div class="vig-comment-more-menu">
+                                <button class="vig-comment-more-item edit">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                                    </svg>
+                                    Edit
+                                </button>
+                                <button class="vig-comment-more-item delete">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M3 6h18"></path>
+                                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                                    </svg>
+                                    Delete
+                                </button>
+                                <button class="vig-comment-more-item report">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                                        <line x1="12" y1="9" x2="12" y2="13"></line>
+                                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                                    </svg>
+                                    Report
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="vig-comment-content">
+                        Tôi đang gặp vấn đề với việc tối ưu SEO cho website. Có ai có kinh nghiệm không?
+                    </div>
+                    <div class="vig-comment-actions">
+                        <button class="vig-comment-reply">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 14 4 9 9 4"></polyline>
+                                <path d="M20 20v-7a4 4 0 0 0-4-4H4"></path>
+                            </svg>
+                            Reply
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Thêm 7 comment tương tự với nội dung khác nhau -->
+            <!-- Comment 4-10 với nội dung ngắn hơn -->
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
