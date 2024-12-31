@@ -335,35 +335,57 @@
 
 .vig-comment-actions {
   display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.vig-comment-action-buttons {
+  display: flex;
   gap: 16px;
 }
 
-.vig-comment-reply {
+.vig-comment-reactions {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 0;
+}
+
+.vig-comment-reaction {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 6px 12px;
+  gap: 4px;
+  padding: 4px 8px;
+  height: 28px;
   background: transparent;
   border: 1px solid var(--vig-comment-border);
-  border-radius: 4px;
-  color: var(--vig-comment-text-secondary);
+  border-radius: 20px;
   font-size: 13px;
   cursor: pointer;
   transition: all 0.2s;
+  color: var(--vig-comment-text-secondary);
 }
 
-.vig-comment-reply svg {
-  width: 14px;
-  height: 14px;
-}
-
-.vig-comment-reply:hover {
-  color: var(--vig-comment-text);
+.vig-comment-reaction:hover {
   background: var(--vig-comment-hover);
+  border-color: var(--vig-comment-primary);
+  color: var(--vig-comment-text);
 }
 
-.vig-comment-reply:hover svg {
-  color: var(--vig-comment-primary);
+.vig-comment-reaction.active {
+  background: var(--vig-comment-primary);
+  color: white;
+  border-color: var(--vig-comment-primary);
+}
+
+.vig-comment-reaction .reaction-emoji {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.vig-comment-reaction .reaction-count {
+  font-size: 12px;
+  font-weight: 500;
 }
 
 @media (max-width: 640px) {
@@ -387,6 +409,28 @@
 
   .vig-comment-submit {
     width: 100%;
+  }
+
+  .vig-comment-action-buttons {
+    flex-wrap: wrap;
+  }
+
+  .vig-comment-reactions {
+    gap: 4px;
+  }
+
+  .vig-comment-reaction {
+    padding: 2px 6px;
+    height: 24px;
+    font-size: 12px;
+  }
+
+  .vig-comment-reaction .reaction-emoji {
+    font-size: 14px;
+  }
+
+  .vig-comment-reaction .reaction-count {
+    font-size: 11px;
   }
 }
 
@@ -626,4 +670,154 @@ emoji-picker {
 .vig-comment-emoji-close svg {
   width: 16px;
   height: 16px;
+}
+
+.vig-comment-reaction-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.vig-comment-reaction-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  color: var(--vig-comment-text-secondary);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.vig-comment-reaction-btn:hover {
+  background: var(--vig-comment-hover);
+  color: var(--vig-comment-text);
+}
+
+.vig-comment-reaction-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+.vig-comment-reactions {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+  background: var(--vig-comment-bg);
+  padding: 4px;
+  border-radius: 20px;
+  border: 1px solid var(--vig-comment-border);
+}
+
+.vig-comment-reaction {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  height: 24px;
+  background: transparent;
+  border-radius: 12px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: var(--vig-comment-text-secondary);
+  border: none;
+}
+
+.vig-comment-reaction:hover {
+  background: var(--vig-comment-hover);
+  color: var(--vig-comment-text);
+}
+
+.vig-comment-reaction.active {
+  background: var(--vig-comment-hover);
+  color: var(--vig-comment-primary);
+}
+
+.vig-comment-reaction .reaction-emoji {
+  font-size: 14px;
+  line-height: 1;
+}
+
+.vig-comment-reaction .reaction-count {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.vig-comment-action-buttons {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.vig-comment-reply {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: transparent;
+  border: 1px solid var(--vig-comment-border);
+  border-radius: 4px;
+  color: var(--vig-comment-text-secondary);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.vig-comment-reply:hover {
+  color: var(--vig-comment-text);
+  background: var(--vig-comment-hover);
+}
+
+.vig-comment-reply svg {
+  width: 14px;
+  height: 14px;
+}
+
+.vig-comment-reaction-picker {
+  position: absolute;
+  display: none;
+  z-index: 1000;
+  background: var(--vig-comment-bg);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.vig-comment-reaction-wrapper.active .vig-comment-reaction-picker {
+  display: block;
+}
+
+/* Desktop styles */
+@media (min-width: 768px) {
+  .vig-comment-reaction-picker {
+    top: 0;
+    left: calc(100% + 8px);
+    transform: none;
+  }
+}
+
+/* Tablet styles */
+@media (min-width: 482px) and (max-width: 767px) {
+  .vig-comment-reaction-picker {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* Mobile styles */
+@media (max-width: 481px) {
+  .vig-comment-reaction-picker {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
 }

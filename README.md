@@ -1,59 +1,91 @@
-# Discussion Template
+# Hệ Thống Bình Luận (Comment System)
 
-Một template hệ thống comment/discussion hiện đại và đầy đủ tính năng, được tạo bởi Cursor AI.
+Một hệ thống bình luận đơn giản và mạnh mẽ được xây dựng với HTML, CSS và JavaScript thuần.
 
-## Tính năng
+## Tính Năng
 
-- 🌓 Dark/Light mode với khả năng tự động phát hiện theme hệ thống
-- 💬 Hệ thống comment đa cấp (nested comments)
-- 👍 Vote system (upvote/downvote)
-- 😀 Emoji picker tích hợp
-- ✏️ Rich text editor với các công cụ cơ bản
-- ⚡ Responsive design cho mọi thiết bị
-- 🎨 Giao diện hiện đại, dễ tùy biến
-- ⚙️ Menu quản lý comment (edit, delete, report)
+### 1. Giao Diện
 
-## Công nghệ sử dụng
+- Thiết kế hiện đại, responsive trên mọi thiết bị
+- Hỗ trợ Dark mode/Light mode
+- Hiển thị avatar và thông tin người dùng
+- Hỗ trợ markdown trong nội dung bình luận
 
-- HTML5
-- CSS3 với CSS Variables cho theme
-- Vanilla JavaScript
-- [emoji-picker-element](https://github.com/nolanlawson/emoji-picker-element) cho emoji picker
+### 2. Tương Tác
 
-## Cấu trúc code
+- Upvote/Downvote bình luận
+- Trả lời bình luận (hỗ trợ đến 3 cấp)
+- Thêm emoji vào nội dung bình luận
+- Thêm reaction cho bình luận (👍, ❤️, 😄, 🎉,...)
+- Chỉnh sửa và xóa bình luận
+- Báo cáo bình luận không phù hợp
 
-- `index.html`: Cấu trúc HTML của template
-- `style.css`: Styles và responsive design
-- `script.js`: JavaScript với cấu trúc module cho từng chức năng:
-  - Theme Handler
-  - Textarea Handler
-  - More Menu Handler
-  - Emoji Handler
-  - Vote Handler
+### 3. Chức Năng Reaction
 
-## Responsive Breakpoints
+- Nút reaction nhỏ gọn bên cạnh nút Reply
+- Hiển thị emoji picker khi click vào nút reaction
+- Hỗ trợ nhiều loại reaction khác nhau
+- Hiển thị số lượng reaction cho mỗi emoji
+- Reaction có background solid khi người dùng đã thêm
+- Tự động wrap reactions trên mobile
 
-- Desktop: > 768px
-- Tablet: 482px - 767px
-- Mobile: < 481px
+## Cài Đặt
 
-## Credits
+1. Clone repository:
 
-Template này được tạo ra ban đầu bởi [v0.dev](https://v0.dev/) - một công cụ AI của Vercel để tạo ra các UI components.
+```bash
+git clone https://github.com/your-username/comment-system.git
+```
 
-Sau đó được phát triển và tối ưu thêm bởi Cursor AI với các tính năng:
+2. Thêm các file CSS và JS vào project:
 
-- Tối ưu responsive design
-- Cải thiện dark/light mode
-- Tối ưu emoji picker
-- Cấu trúc lại code theo module
-- Thêm các tính năng tương tác
-- Fix các bugs và cải thiện UX
+```html
+<link rel="stylesheet" href="style.css" />
+<script src="script.js"></script>
+```
 
-## Version
+3. Thêm thư viện emoji-picker:
 
-v0.1.0 (Based on v0.dev template)
+```html
+<script
+  src="https://cdn.jsdelivr.net/npm/emoji-picker-element@^1/index.js"
+  type="module"
+></script>
+```
+
+4. Sử dụng HTML template:
+
+```html
+<div class="vig-comment-container">
+  <!-- Comment form -->
+  <!-- Comment list -->
+</div>
+```
+
+## Sử Dụng
+
+### Khởi tạo
+
+```javascript
+document.addEventListener("DOMContentLoaded", () => {
+  // Code khởi tạo sẽ tự động chạy
+});
+```
+
+### Tùy chỉnh theme
+
+```css
+:root {
+  --vig-comment-bg: #ffffff;
+  --vig-comment-text: #1a1b1e;
+  /* Thêm các biến CSS khác */
+}
+```
+
+## Đóng Góp
+
+Mọi đóng góp đều được chào đón! Hãy tạo pull request hoặc báo cáo issues nếu bạn phát hiện lỗi.
 
 ## License
 
-MIT License
+MIT License - xem file [LICENSE](LICENSE) để biết thêm chi tiết.

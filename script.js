@@ -7,7 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
         emojiButton: document.querySelector('.vig-comment-emoji-wrapper .vig-comment-tool-btn'),
         emojiWrapper: document.querySelector('.vig-comment-emoji-wrapper'),
         emojiPicker: document.querySelector('emoji-picker'),
-        voteButtons: document.querySelectorAll('.vig-comment-vote-btn')
+        voteButtons: document.querySelectorAll('.vig-comment-vote-btn'),
+        reactionButtons: document.querySelectorAll('.vig-comment-reaction-btn')
     };
 
     // Xử lý Theme
@@ -197,6 +198,101 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    // Thêm Reaction Handler
+    const reactionHandler = {
+        init() {
+            elements.reactionButtons.forEach(button => {
+                const wrapper = button.closest('.vig-comment-reaction-wrapper');
+                const picker = wrapper.querySelector('.vig-comment-reaction-picker');
+                const reactionsContainer = wrapper.closest('.vig-comment-actions').querySelector('.vig-comment-reactions');
+
+                button.addEventListener('click', (e) => this.toggleReactionPicker(e, wrapper));
+                
+                const emojiPicker = picker.querySelector('emoji-picker');
+                emojiPicker.addEventListener('emoji-click', event => 
+                    this.handleReactionSelect(event, reactionsContainer, wrapper));
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.vig-comment-reaction-wrapper')) {
+                    this.closeAllPickers();
+                }
+            });
+        },
+
+        toggleReactionPicker(e, wrapper) {
+            e.stopPropagation();
+            this.closeAllPickers();
+            wrapper.classList.toggle('active');
+        },
+
+        closeAllPickers() {
+            document.querySelectorAll('.vig-comment-reaction-wrapper').forEach(w => 
+                w.classList.remove('active'));
+        },
+
+        handleReactionSelect(event, reactionsContainer, wrapper) {
+            if (!reactionsContainer) return;
+            
+            const emoji = event.detail.unicode;
+            const existingReaction = this.findExistingReaction(reactionsContainer, emoji);
+
+            if (existingReaction) {
+                this.updateReactionCount(existingReaction);
+            } else {
+                this.addNewReaction(reactionsContainer, emoji);
+            }
+
+            wrapper.classList.remove('active');
+        },
+
+        findExistingReaction(container, emoji) {
+            if (!container || !container.children) return null;
+            
+            return Array.from(container.children).find(reaction => {
+                const emojiElement = reaction.querySelector('.reaction-emoji');
+                return emojiElement && emojiElement.textContent === emoji;
+            });
+        },
+
+        updateReactionCount(reaction) {
+            if (!reaction) return;
+            
+            const countElement = reaction.querySelector('.reaction-count');
+            if (!countElement) return;
+            
+            let count = parseInt(countElement.textContent) || 0;
+            
+            if (reaction.classList.contains('active')) {
+                count--;
+                if (count <= 0) {
+                    reaction.remove();
+                } else {
+                    countElement.textContent = count;
+                }
+                reaction.classList.remove('active');
+            } else {
+                count++;
+                countElement.textContent = count;
+                reaction.classList.add('active');
+            }
+        },
+
+        addNewReaction(container, emoji) {
+            if (!container) return;
+            
+            const reaction = document.createElement('div');
+            reaction.className = 'vig-comment-reaction active';
+            reaction.innerHTML = `
+                <span class="reaction-emoji">${emoji}</span>
+                <span class="reaction-count">1</span>
+            `;
+            
+            reaction.addEventListener('click', () => this.updateReactionCount(reaction));
+            container.appendChild(reaction);
+        }
+    };
+
     // Khởi tạo tất cả các handler
     const initializeApp = () => {
         themeHandler.initTheme();
@@ -204,6 +300,7 @@ document.addEventListener('DOMContentLoaded', () => {
         moreMenuHandler.init();
         emojiHandler.init();
         voteHandler.init();
+        reactionHandler.init();
     };
 
     // Chạy ứng dụng
