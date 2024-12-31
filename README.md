@@ -1,6 +1,22 @@
-# Hệ Thống Bình Luận (Comment System)
+# Template Comment System
 
-Một hệ thống bình luận đơn giản và mạnh mẽ được xây dựng với HTML, CSS và JavaScript thuần.
+> Một hệ thống comment đơn giản nhưng mạnh mẽ, được tạo ra với tình yêu và sự tỉ mỉ ❤️
+
+Template này được tạo ra bởi [v0.dev](https://v0.dev/) - một công cụ AI của Vercel để tạo ra các UI components. Và Cursor AI để tối ưu code.
+
+Tui chỉ là người viết prompt và tối ưu code để phù hợp với nhu cầu của tui.
+
+## Tại sao nên dùng template này?
+
+- 🎨 **Thiết kế tối giản nhưng đẹp mắt**: Giao diện được thiết kế theo phong cách modern minimal
+- 🚀 **Nhẹ và nhanh**: Không phụ thuộc vào các framework nặng nề
+- 🎯 **Dễ tích hợp**: Chỉ cần vài dòng code là có thể tích hợp vào website của bạn
+- 💪 **Mạnh mẽ**: Đầy đủ các tính năng cần thiết cho một hệ thống comment
+- 🌈 **Dễ tùy biến**: Sử dụng CSS variables để dễ dàng thay đổi giao diện
+
+## Demo
+
+Xem demo tại đây: [Demo Link](#) _(coming soon)_
 
 ## Tính Năng
 
