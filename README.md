@@ -26,6 +26,7 @@ Xem demo tại đây: [Demo Link](#) _(coming soon)_
 - Hỗ trợ Dark mode/Light mode
 - Hiển thị avatar và thông tin người dùng
 - Hỗ trợ markdown trong nội dung bình luận
+- Phân trang đẹp mắt với nút prev/next và số trang
 
 ### 2. Tương Tác
 

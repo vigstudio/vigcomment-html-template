@@ -56,53 +56,66 @@ document.addEventListener('DOMContentLoaded', () => {
     // Xử lý More Menu
     const moreMenuHandler = {
         init() {
-            // Xử lý click nút more
-            elements.moreButtons.forEach(button => {
-                button.addEventListener('click', (e) => this.toggleMenu(e, button));
+            document.querySelectorAll('.vig-comment-more').forEach(button => {
+                button.addEventListener('click', (e) => this.toggleMenu(e));
+            });
+
+            // Đóng menu khi click vào các action
+            document.querySelectorAll('.vig-comment-more-item').forEach(item => {
+                item.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const menu = e.target.closest('.vig-comment-more-menu');
+                    const button = menu.previousElementSibling;
+                    
+                    // Xử lý action tương ứng ở đây
+                    if (e.target.classList.contains('edit')) {
+                        // Xử lý edit
+                    } else if (e.target.classList.contains('delete')) {
+                        // Xử lý delete
+                    } else if (e.target.classList.contains('report')) {
+                        // Xử lý report
+                    }
+                    
+                    // Đóng menu sau khi thực hiện action
+                    menu.classList.remove('active');
+                    button.classList.remove('active');
+                });
             });
 
             // Đóng menu khi click ra ngoài
             document.addEventListener('click', (e) => {
-                if (!e.target.closest('.vig-comment-more')) {
-                    this.closeAllMenus();
+                if (!e.target.closest('.vig-comment-more-wrapper')) {
+                    document.querySelectorAll('.vig-comment-more-menu').forEach(menu => {
+                        menu.classList.remove('active');
+                        const button = menu.previousElementSibling;
+                        if (button) {
+                            button.classList.remove('active');
+                        }
+                    });
                 }
             });
+        },
 
-            // Xử lý các action trong menu
-            document.querySelectorAll('.vig-comment-more-item').forEach(item => {
-                item.addEventListener('click', (e) => this.handleMenuAction(e, item));
+        toggleMenu(e) {
+            e.stopPropagation();
+            const button = e.currentTarget;
+            const menu = button.nextElementSibling;
+            const isOpen = menu.classList.contains('active');
+            
+            // Đóng tất cả các menu khác
+            document.querySelectorAll('.vig-comment-more-menu').forEach(m => {
+                m.classList.remove('active');
+                m.previousElementSibling.classList.remove('active');
             });
-        },
-
-        toggleMenu(e, button) {
-            e.stopPropagation();
-            this.closeAllMenus();
-            button.classList.toggle('active');
-        },
-
-        closeAllMenus() {
-            elements.moreButtons.forEach(btn => btn.classList.remove('active'));
-        },
-
-        handleMenuAction(e, item) {
-            e.stopPropagation();
-            const action = item.classList.contains('edit') ? 'edit' : 
-                          item.classList.contains('delete') ? 'delete' : 'report';
-            const comment = item.closest('.vig-comment-item');
             
-            switch(action) {
-                case 'edit':
-                    console.log('Edit comment:', comment);
-                    break;
-                case 'delete':
-                    console.log('Delete comment:', comment);
-                    break;
-                case 'report':
-                    console.log('Report comment:', comment);
-                    break;
+            // Toggle menu hiện tại
+            if (!isOpen) {
+                menu.classList.add('active');
+                button.classList.add('active');
+            } else {
+                menu.classList.remove('active');
+                button.classList.remove('active');
             }
-            
-            item.closest('.vig-comment-more').classList.remove('active');
         }
     };
 
@@ -110,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const emojiHandler = {
         init() {
             elements.emojiButton.addEventListener('click', (e) => this.toggleEmojiPicker(e));
-            
+
             document.addEventListener('click', (e) => {
                 if (!elements.emojiWrapper.contains(e.target)) {
                     this.closeEmojiPicker();

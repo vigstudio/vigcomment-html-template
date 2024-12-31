@@ -76,6 +76,7 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
+  object-fit: cover;
 }
 
 .vig-comment-textarea {
@@ -172,32 +173,28 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 0px;
+  gap: 4px;
   padding: 4px 8px;
-  border: none;
   min-width: 32px;
-  min-height: 80px;
-  background: var(--vig-comment-hover);
-  border-radius: 4px;
+  max-height: 120px;
+  position: sticky;
+  top: 16px;
+  background: var(--vig-comment-bg);
+  border-radius: 8px;
 }
 
 .vig-comment-vote-btn {
-  padding: 4px 8px;
-  width: 100%;
-  height: auto;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 4px 8px;
+  height: 32px;
   background: transparent;
   border: none;
+  border-radius: 6px;
   color: var(--vig-comment-text-secondary);
-  font-size: 12px;
   cursor: pointer;
   transition: all 0.2s;
-  line-height: 1;
-  border-radius: 2px;
-  flex: 1;
 }
 
 .vig-comment-vote-btn:hover {
@@ -210,16 +207,14 @@
 }
 
 .vig-comment-vote-count {
-  font-size: 12px;
-  color: var(--vig-comment-text);
-  line-height: 1;
-  padding: 8px 0;
-  min-width: 24px;
-  text-align: center;
-  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 6px 0;
+  height: 28px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--vig-comment-text);
 }
 
 .vig-comment-main {
@@ -236,8 +231,14 @@
 
 .vig-comment-user {
   display: flex;
-  align-items: center;
-  gap: 8px;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.vig-comment-user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .vig-comment-name {
@@ -328,9 +329,26 @@
 }
 
 .vig-comment-content {
-  font-size: 14px;
-  line-height: 1.5;
-  margin-bottom: 12px;
+  flex: 1;
+  max-height: 500px;
+  overflow-y: auto;
+  padding-right: 16px;
+  /* Custom scrollbar cho content dài */
+  scrollbar-width: thin;
+  scrollbar-color: var(--vig-comment-border) transparent;
+}
+
+.vig-comment-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.vig-comment-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.vig-comment-content::-webkit-scrollbar-thumb {
+  background-color: var(--vig-comment-border);
+  border-radius: 3px;
 }
 
 .vig-comment-actions {
@@ -349,6 +367,9 @@
   gap: 6px;
   flex-wrap: wrap;
   margin-top: 0;
+  background: transparent;
+  border: none;
+  padding: 0;
 }
 
 .vig-comment-reaction {
@@ -358,8 +379,8 @@
   padding: 4px 8px;
   height: 28px;
   background: transparent;
-  border: 1px solid var(--vig-comment-border);
-  border-radius: 20px;
+  border: none;
+  border-radius: 6px;
   font-size: 13px;
   cursor: pointer;
   transition: all 0.2s;
@@ -367,15 +388,13 @@
 }
 
 .vig-comment-reaction:hover {
-  background: var(--vig-comment-hover);
-  border-color: var(--vig-comment-primary);
   color: var(--vig-comment-text);
+  background: var(--vig-comment-hover);
 }
 
 .vig-comment-reaction.active {
-  background: var(--vig-comment-primary);
-  color: white;
-  border-color: var(--vig-comment-primary);
+  color: var(--vig-comment-primary);
+  background: transparent;
 }
 
 .vig-comment-reaction .reaction-emoji {
@@ -431,6 +450,28 @@
 
   .vig-comment-reaction .reaction-count {
     font-size: 11px;
+  }
+
+  .vig-comment-vote {
+    padding: 2px 4px;
+    min-width: 28px;
+    max-height: 100px;
+  }
+
+  .vig-comment-vote-btn {
+    padding: 2px 4px;
+    height: 28px;
+  }
+
+  .vig-comment-vote-count {
+    padding: 4px 0;
+    height: 24px;
+    font-size: 13px;
+  }
+
+  .vig-comment-avatar {
+    width: 32px;
+    height: 32px;
   }
 }
 
@@ -542,7 +583,7 @@
   }
 }
 
-/* Tablet styles - thêm mới cho khoảng 482px-767px */
+/* Tablet styles */
 @media (min-width: 482px) and (max-width: 767px) {
   .vig-comment-emoji-picker {
     position: fixed;
@@ -819,5 +860,117 @@ emoji-picker {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+  }
+}
+
+/* Pagination styles */
+.vig-comment-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 32px;
+  padding: 16px 0;
+}
+
+.vig-comment-pagination-pages {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.vig-comment-pagination-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 32px;
+  padding: 0 6px;
+  border: 1px solid var(--vig-comment-border);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--vig-comment-text);
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.vig-comment-pagination-btn:hover:not(:disabled) {
+  background: var(--vig-comment-hover);
+  border-color: var(--vig-comment-primary);
+  color: var(--vig-comment-primary);
+}
+
+.vig-comment-pagination-btn.active {
+  background: var(--vig-comment-primary);
+  border-color: var(--vig-comment-primary);
+  color: white;
+}
+
+.vig-comment-pagination-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.vig-comment-pagination-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.vig-comment-pagination-dots {
+  color: var(--vig-comment-text-secondary);
+  padding: 0 4px;
+}
+
+@media (max-width: 640px) {
+  .vig-comment-pagination {
+    gap: 4px;
+  }
+
+  .vig-comment-pagination-btn {
+    min-width: 28px;
+    height: 28px;
+    font-size: 13px;
+  }
+
+  .vig-comment-pagination-btn svg {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+.vig-comment-labels {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.vig-comment-label {
+  padding: 2px 6px;
+  font-size: 11px;
+  font-weight: 500;
+  border-radius: 4px;
+  line-height: 1.4;
+}
+
+.vig-comment-label.owner {
+  background: #e6f4ff;
+  color: #0958d9;
+}
+
+.vig-comment-label.level {
+  background: #f6ffed;
+  color: #389e0d;
+}
+
+.vig-comment-label.mod {
+  background: #fff1f0;
+  color: #cf1322;
+}
+
+@media (max-width: 640px) {
+  .vig-comment-label {
+    padding: 1px 4px;
+    font-size: 10px;
   }
 }
