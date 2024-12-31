@@ -16,7 +16,7 @@ Tui chỉ là người viết prompt và tối ưu code để phù hợp với n
 
 ## Demo
 
-Xem demo tại đây: [Demo Link](#) _(coming soon)_
+Xem demo tại đây: [https://vigstudio.github.io/vigcomment-html-template/](https://vigstudio.github.io/vigcomment-html-template/)
 
 ## Tính Năng
 
